@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Random Number Generator</title>
+  <link rel="stylesheet" href="bootstrap.css" type="text/css" media="all" />
+</head>
+<body style="background-color: rgb(228,235,201);">
+  <div class="container-sm p-3">
+  <h1 class="text-center mb-4 fw-bolder" style="font-family: 'Courier New', Courier, monospace;">RANDOM NUMBER GENERATOR</h1>
+  <div class="row justify-content-center">
+  <div class="col-md-4 col-sm-6 mb-2">
+  <input type="number" name="from-box" id="from-box" class="form-control border-dark" placeholder="Min value" >
+  </div>
+  <div class="col-auto mb-3">
+    <button class="btn btn-light" id="btndouble">&harr;</button>
+    </div>
+    <div class="col-md-4 col-sm-6 mb-2">
+  <input type="number" name="to-box" id="to-box"  class="form-control border-dark" placeholder="Max value">
+  </div>
+  </div>
+  <div class="text-center mt-3">
+  <button id="btn" class="btn btn-primary border-secondary">Generate</button>
+  </div>
+  <h4 class="fw-bold" style="font-family: fantasy;"></h4>
+  </div>
+  <script>
+    var fromBox=document.getElementById('from-box');
+    var toBox=document.getElementById('to-box');
+    var result=document.querySelector("h4");
+    var btn=document.getElementById('btn');
+    document.getElementById('btndouble').addEventListener('click', ()=>{
+      [fromBox.value,toBox.value]= [toBox.value,fromBox.value];
+      });
+    btn.addEventListener('click',()=>{
+    var min = parseInt(fromBox.value);
+    var max = parseInt(toBox.value);
+    if(min===''||  max===''||min>=max|| isNaN(min)|| isNaN(max) ){
+result.innerHTML=`Please enter a valid number`;
+    }
+    else{
+      var number=Math.floor(Math.random()*(max-min+1))+min;
+      result.innerHTML=`Random number is ${number}.`;
+   }});
+    
+  </script>
+</body>
+</html>
